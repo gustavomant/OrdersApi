@@ -51,7 +51,7 @@ class OrderServiceTest {
     }
 
     @Test
-    void getAllOrders_returnsOrderDtos() {
+    void testGetAllOrders_returnsOrderDtos() {
         Customer customer = new Customer();
         customer.setId(1L);
 
@@ -81,14 +81,14 @@ class OrderServiceTest {
     }
 
     @Test
-    void createOrder_throwsExceptionIfCustomerNotFound() {
+    void testCreateOrder_throwsExceptionIfCustomerNotFound() {
         CreateOrderDto createOrderDto = new CreateOrderDto(1L, List.of(1L, 2L));
         when(customerRepository.findById(1L)).thenReturn(Optional.empty());
         assertThrows(NoSuchElementException.class, () -> orderService.createOrder(createOrderDto));
     }
 
     @Test
-    void createOrder_createsOrderSuccessfully() {
+    void testCreateOrder_createsOrderSuccessfully() {
         Customer customer = new Customer();
         customer.setId(1L);
 

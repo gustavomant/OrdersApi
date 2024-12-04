@@ -35,7 +35,7 @@ public class ProductServiceTest {
     }
 
     @Test
-    void createProduct() {
+    void testCreateProduct() {
         CreateProductDto createProductDto = new CreateProductDto(
             "Mouse",
             BigDecimal.valueOf(16.99),
@@ -54,7 +54,7 @@ public class ProductServiceTest {
     }
 
     @Test
-    void getAllProducts() {
+    void testGetAllProducts() {
         List<Product> products = List.of(
             Product.builder().name("Mouse").price(BigDecimal.valueOf(16.99)).stock(BigInteger.valueOf(50)).build(),
             Product.builder().name("Teclado").price(BigDecimal.valueOf(16.99)).stock(BigInteger.valueOf(50)).build()
