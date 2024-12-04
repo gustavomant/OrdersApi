@@ -15,6 +15,8 @@ import com.orders.orders.dtos.CreateOrderDto;
 import com.orders.orders.dtos.OrderDto;
 import com.orders.orders.service.OrderService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
@@ -29,7 +31,7 @@ public class OrderController {
 
     @PostMapping
     public ResponseEntity<Object> createOrder(
-        @RequestBody CreateOrderDto createOrderDto
+        @RequestBody @Valid CreateOrderDto createOrderDto
     ) {
         orderService.createOrder(createOrderDto);
         return ResponseEntity.status(HttpStatus.CREATED).build();

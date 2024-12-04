@@ -15,6 +15,8 @@ import com.orders.orders.dtos.CreateProductDto;
 import com.orders.orders.dtos.ProductDto;
 import com.orders.orders.service.ProductService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/products")
 public class ProductController {
@@ -29,7 +31,7 @@ public class ProductController {
 
     @PostMapping
     public ResponseEntity<Object> createProduct(
-        @RequestBody CreateProductDto createProductDto
+        @RequestBody @Valid CreateProductDto createProductDto
     ) {
         productService.createProduct(createProductDto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
