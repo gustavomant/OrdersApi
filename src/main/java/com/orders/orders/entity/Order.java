@@ -47,7 +47,7 @@ public class Order {
     @Column(name = "total_amount")
     private BigDecimal totalAmount;
 
-    private enum Status {
+    public enum Status {
         PENDING,
         PAID,
         SHIPPED,
