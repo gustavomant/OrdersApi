@@ -3,6 +3,8 @@ package com.orders.orders.entity;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
+import com.orders.orders.exception.InsufficientStockException;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -39,12 +41,16 @@ public class Product {
     public void deductStock() {
         if (this.stock.compareTo(BigInteger.ONE) >= 0) {
             this.stock = this.stock.subtract(BigInteger.ONE);
+        } else {
+            throw new InsufficientStockException();
         }
     }
 
     public void deductStock(int amount) {
         if (this.stock.compareTo(BigInteger.valueOf(amount)) >= 0) {
             this.stock = this.stock.subtract(BigInteger.valueOf(amount));
+        } else {
+            throw new InsufficientStockException();
         }
     }
     
